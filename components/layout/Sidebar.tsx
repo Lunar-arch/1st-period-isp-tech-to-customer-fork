@@ -19,6 +19,12 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 
+const collapseClassName = [
+	"md:pointer-events-auto",
+	"md:-translate-x-[calc(100%-var(--sidebar-collapse-peek))]",
+	"md:hover:translate-x-0",
+].join(" ");
+
 export default function Sidebar({
 	title = "Tech to Customer",
 	items = [],
@@ -40,9 +46,7 @@ export default function Sidebar({
 				"absolute inset-y-0 left-0 px-4 pr-8 py-4 pointer-events-auto transition-transform duration-300 w-full md:w-1/4 md:max-w-76 md:min-w-56",
 				isOpen ? "translate-x-0" : "-translate-x-full",
 				"md:translate-x-0",
-				isAutoCollapse
-					? "md:pointer-events-auto md:-translate-x-[calc(100%-1rem)] md:hover:translate-x-0"
-					: ""
+				isAutoCollapse ? collapseClassName : ""
 			)}
 		>
 			<div className="w-full h-full bg-background-secondary/50 rounded-xl backdrop-blur-md pointer-events-auto flex flex-col gap-3 px-1.5 py-2">

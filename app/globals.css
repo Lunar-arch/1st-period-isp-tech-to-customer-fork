@@ -24,6 +24,7 @@
   --success-text: #1b4332;
   --accent-main: #53abb1;
   --accent-text: #6C959D;
+  --sidebar-collapse-peek: 1rem;
   --font-sans: 'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'Geist Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
