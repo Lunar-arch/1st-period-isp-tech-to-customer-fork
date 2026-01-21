@@ -17,7 +17,7 @@ import {
 	User,
 	Wrench,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const collapseClassName = [
 	"md:pointer-events-auto",
@@ -32,6 +32,10 @@ export default function Sidebar({
 	autoCollapse = true,
 }: SidebarParams = {}) {
 	const [isAutoCollapse, setIsAutoCollapse] = useState(autoCollapse);
+
+	useEffect(() => {
+		setIsAutoCollapse(autoCollapse);
+	}, [autoCollapse]);
 
 	const sidebarItems = useMemo(() => {
 		return items.map((item) => ({
