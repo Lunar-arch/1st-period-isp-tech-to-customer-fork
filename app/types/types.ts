@@ -11,4 +11,5 @@ export type SidebarParams =  {
 	title?: string;
 	items?: SidebarItemParams[];
 	isOpen?: boolean;
+	autoCollapse?: boolean;
 }

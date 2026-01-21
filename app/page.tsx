@@ -32,7 +32,7 @@ export default function Home() {
       <main className="bg-background-main text-text-main w-full min-h-screen px-6 py-8">
         jj
       </main>
-      <Sidebar title="Tech to Customer" items={sidebarItems} isOpen={isMobileSidebarOpen} />
+      <Sidebar title="Tech to Customer" items={sidebarItems} isOpen={isMobileSidebarOpen} autoCollapse />
     </>
   );
 }
