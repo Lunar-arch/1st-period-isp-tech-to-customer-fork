@@ -11,21 +11,17 @@ import {
 	Headset,
 	History,
 	Home,
-	Pin,
-	PinOff,
 	Settings,
 	User,
 	Wrench,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 export default function Sidebar({
-	autoCollapse = true,
 	title = "Tech to Customer",
 	items = [],
+	isOpen,
 }: SidebarParams = {}) {
-	const [isAutoCollapse, setIsAutoCollapse] = useState(autoCollapse);
-
 	const sidebarItems = useMemo(() => {
 		return items.map((item) => ({
 			...item,
@@ -36,27 +32,15 @@ export default function Sidebar({
 	return (
 		<aside
 			className={clsx(
-				"w-1/4 max-w-76 min-w-56 absolute inset-y-0 left-0 px-4 pr-8 py-4 pointer-events-auto",
-				isAutoCollapse
-					? "pointer-events-auto -translate-x-[calc(100%-1rem)] hover:translate-x-0 transition-transform duration-300"
-					: ""
+				"absolute inset-y-0 left-0 px-4 pr-8 py-4 pointer-events-auto transition-transform duration-300 w-full md:w-1/4 md:max-w-76 md:min-w-56",
+				isOpen ? "translate-x-0" : "-translate-x-full",
+				"md:translate-x-0"
 			)}
 		>
 			<div className="w-full h-full bg-background-secondary/50 rounded-xl backdrop-blur-md pointer-events-auto flex flex-col gap-3 px-1.5 py-2">
 				<div className="flex items-center gap-2 px-2 pt-1">
-					<button
-						type="button"
-						onClick={() => setIsAutoCollapse((v) => !v)}
-						className="h-8 w-8 grid place-items-center rounded-md hover:bg-background-secondary/50 transition-colors duration-200"
-						aria-label="Toggle sidebar"
-						title={isAutoCollapse ? "Pin sidebar open" : "Enable auto-collapse"}
-					>
-						{isAutoCollapse ? <PinOff className="h-5 w-5" /> : <Pin className="h-5 w-5" />}
-					</button>
-					<div className="flex items-center gap-2 min-w-0">
-						<div className="h-2 w-2 rounded-full bg-text-main/70" aria-hidden="true" />
-						<h2 className="text-sm font-semibold tracking-wide opacity-90 truncate">{title}</h2>
-					</div>
+					<div className="h-2 w-2 rounded-full bg-text-main/70" aria-hidden="true" />
+					<h2 className="text-sm font-semibold tracking-wide opacity-90 truncate">{title}</h2>
 				</div>
 
 				<ul className="grid grid-cols-[2rem_1fr] gap-2 w-full px-1">
